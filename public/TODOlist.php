@@ -51,15 +51,15 @@
 					<? unset($items[$_GET['index']]);?>
 				<? elseif($_GET['action'] == 'mark'): ?>
 					<?= "<h2>{$items[$_GET['index']]} is marked complete</h2>"; ?>
-					<? save_file($items,FILENAME);?>
 				<? endif; ?>
+				<? save_file($items,FILENAME);?>
 			<? endif; ?>
 			<ol>
 				<? foreach($items as $key => $item): ?>
-						<? echo "<li>{$item}
-								<a href=\"TODOlist.php?action=remove&index={$key}\">Remove Item</a>
-								<a href=\"TODOlist.php?action=mark&index={$key}\">Mark Complete</a>
-							  </li>";?>
+						<li> <?= htmlspecialchars(strip_tags($item));?>
+								<?= "<a href=\"TODOlist.php?action=remove&index={$key}\">Remove Item</a>"; ?>
+								<?= "<a href=\"TODOlist.php?action=mark&index={$key}\">Mark Complete</a>"; ?>
+						</li>
 				<? endforeach; ?>
 			</ol>
 		<form method="post" action="TODOlist.php">
