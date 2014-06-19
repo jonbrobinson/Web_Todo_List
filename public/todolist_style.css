@@ -1,0 +1,49 @@
+h1 {
+	color: #F74906;
+	text-decoration: overline;
+	text-align: center;
+	font-family: Helvetica Neue;
+	padding: 15px;
+}
+
+body {
+	font-family: Josefin Slab;
+	background-image: url('css_images/background.jpg');
+	}
+a:link{;
+	text-decoration: none;
+	color: #554E44;
+}
+a:hover{
+	bacgroungd-color: #528FA8;
+	text-decoration:  none;
+}
+
+a:visited{
+	color: #EE7170;
+	text-decoration:  none;
+}
+
+ol {
+	padding: 5px;
+	text-align: center;
+	list-style-position: inside;
+}
+
+div{
+	background-color: #EDEDE4;
+	border: 1px solid;
+	border-radius: 25px;
+	margin: 15px auto;
+	width: 800px;
+	height: 800px;
+	horizontal-align: center;
+	opacity: 0.85;
+	-webkit-box-shadow: 3px 3px 5px 6px #ccc;
+	box-shadow: 3px 3px 5px 6px #ccc;
+}
+
+
+hr {
+	width: 300px;
+}
