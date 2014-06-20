@@ -4,17 +4,20 @@
 
 	$todo_data_store = new Filestore('list.txt');
 
-	$items = $todo_data_store->read_lines();
+	$items = $todo_data_store->read();
 	if(!empty($_POST)){
-		$push_item = $_POST['item'];
-		array_push($items,$push_item);
-		$todo_data_store->write_lines($items);
+			$push_item = $_POST['item'];
+			if(strlen($push_item)> 240){
+				throw new Exception('$push_item must be shorter than 240 characters');
+			}
+			array_push($items,$push_item);
+			$todo_data_store->write($items);
 	}
 
 	if(count($_FILES) > 0 && $_FILES['file1']['error']== 0 && $_FILES['file1']['type']){
 
 		//Set the destination directory for uploads
-		$upload_dir = '/vagrant/sites/todo.dev/public/uploads/';
+		$upload_dir = '/vagrant/sites/todo.dev/pu$blic/uploads/';
 		// Grab hte filename from the upload file by using basename
 		$filename = basename($_FILES['file1']['name']);
 		// Create the saved filename using the file's original name and our upload directory
@@ -40,7 +43,7 @@
 			<? elseif($_GET['action'] == 'mark'): ?>
 				<?= "<h2>{$items[$_GET['index']]} is marked complete</h2>"; ?>
 			<? endif; ?>
-			<? $todo_data_store->write_lines($items);?>
+			<? $todo_data_store->write($items);?>
 		<? endif; ?>
 		<ol>
 			<? foreach($items as $key => $item): ?>
